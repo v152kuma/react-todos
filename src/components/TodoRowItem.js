@@ -1,6 +1,6 @@
 function TodoRowItem(props) {
   return (
-    <tr>
+    <tr onClick={() => props.deleteTodo(props.index)}>
       <th scope='row'>{props.index}</th>
       <td>{props.work}</td>
       <td>{props.assignedTo}</td>
