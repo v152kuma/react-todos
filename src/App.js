@@ -1,38 +1,54 @@
-import logo from './logo.svg';
+
 import './App.css';
+import TodoTable from './components/TodoTable';
+
 
 function App() {
 
+  const todos = [ { index: 1, work: 'Learn React', assignedTo: 'John' },
+     { index: 2, work: 'Learn Angular', assignedTo: 'Smith' },
+     { index: 3, work: 'Learn Vue', assignedTo: 'Doe' },
+     { index: 4, work: 'Learn Node', assignedTo: 'Guy Ritchie' }
+  ]
   /*this is a commnet*/
+
+  const addTodo = () => {
+
+    if(todos.length > 0){
+      const newTodo = {
+        index: todos.length + 1,
+        work: getNewWork(),
+        assignedTo: getNewAssignedTo()
+      }
+      todos.push(newTodo);
+      console.log(todos);
+    }
+
+  }
+
+  const getNewWork = () => {
+    //create random string with new work
+    return 'Learn React';
+  }
+
+  const getNewAssignedTo = () => {
+    //create random string with new assignedTo
+    return 'John';
+  }
+
   return (
 
-    <div className="App">
-    <div>
-      <table>
-        <tr>
-          <th>Index</th>
-          <th>Work</th>
-          <th>Assigned to</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>LeetCode</td>
-          <td>Person 1</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>ByteByteGo</td>
-          <td>Person 2</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Cimpress</td>
-          <td>Person 3</td>
-        </tr>
-      </table>
-   </div>
+    <div className="mt-5 container">
+      <div className='card'>
+        <div className='card-header'>
+          My Todo's
+        </div>
+        <div className='card-body'>
+          <TodoTable todos={todos} />
+        <button className='btn btn-primary' onClick={addTodo}>Add Todo</button>
+        </div>
+      </div>
 
-      
     </div>
   );
 }
