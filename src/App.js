@@ -13,28 +13,19 @@ function App() {
   ])
   /*this is a commnet*/
 
-  const addTodo = () => {
+  const addTodo = (work, assignedTo) => {
 
     if(todos.length > 0){
       const newTodo = {
         index: todos.length + 1,
-        work: getNewWork(),
-        assignedTo: getNewAssignedTo()
+        work: work,
+        assignedTo: assignedTo
       }
       setTodos(todos => [...todos, newTodo])
     }
 
   }
 
-  const getNewWork = () => {
-    //create random string with new work
-    return 'Learn React';
-  }
-
-  const getNewAssignedTo = () => {
-    //create random string with new assignedTo
-    return 'John';
-  }
 
   return (
 
@@ -44,9 +35,10 @@ function App() {
           My Todo's
         </div>
         <div className='card-body'>
+          
           <TodoTable todos={todos} />
         <button className='btn btn-primary' onClick={addTodo}>Add Todo</button>
-        <NewToDoForm/>
+        <NewToDoForm addTodo={addTodo}/>
         </div>
       </div>
 
