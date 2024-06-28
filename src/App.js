@@ -6,11 +6,9 @@ import NewToDoForm from './components/NewTodoForm';
 
 function App() {
 
-  const [todos, setTodos] = useState([{ index: 1, work: 'Learn React', assignedTo: 'John' },
-  { index: 2, work: 'Learn Angular', assignedTo: 'Smith' },
-  { index: 3, work: 'Learn Vue', assignedTo: 'Doe' },
-  { index: 4, work: 'Learn Node', assignedTo: 'Guy Ritchie' }
-  ])
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
+
+  const [todos, setTodos] = useState([])
   /*this is a commnet*/
 
   const addTodo = (work, assignedTo) => {
@@ -48,8 +46,11 @@ return (
       <div className='card-body'>
 
         <TodoTable todos={todos} deleteTodo={deleteTodo} />
-
-        <NewToDoForm addTodo={addTodo} />
+        <button className='btn btn-primary' onClick={() => setShowAddTodoForm(!showAddTodoForm)}>
+          {showAddTodoForm ? 'Close New Todo': 'New Todo'}
+        </button>
+        { showAddTodoForm &&
+          <NewToDoForm addTodo={addTodo} />}
       </div>
     </div>
 
