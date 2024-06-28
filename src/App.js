@@ -1,15 +1,16 @@
-
+import React, {useState} from 'react';
 import './App.css';
 import TodoTable from './components/TodoTable';
+import NewToDoForm from './components/NewTodoForm';
 
 
 function App() {
 
-  const todos = [ { index: 1, work: 'Learn React', assignedTo: 'John' },
+  const [todos, setTodos] = useState([ { index: 1, work: 'Learn React', assignedTo: 'John' },
      { index: 2, work: 'Learn Angular', assignedTo: 'Smith' },
      { index: 3, work: 'Learn Vue', assignedTo: 'Doe' },
      { index: 4, work: 'Learn Node', assignedTo: 'Guy Ritchie' }
-  ]
+  ])
   /*this is a commnet*/
 
   const addTodo = () => {
@@ -20,8 +21,7 @@ function App() {
         work: getNewWork(),
         assignedTo: getNewAssignedTo()
       }
-      todos.push(newTodo);
-      console.log(todos);
+      setTodos(todos => [...todos, newTodo])
     }
 
   }
@@ -46,6 +46,7 @@ function App() {
         <div className='card-body'>
           <TodoTable todos={todos} />
         <button className='btn btn-primary' onClick={addTodo}>Add Todo</button>
+        <NewToDoForm/>
         </div>
       </div>
 
