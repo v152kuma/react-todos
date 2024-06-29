@@ -8,10 +8,10 @@ function App() {
 
   const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState<{ index: number; work: string; assignedTo: string }[]>([]);
   
 
-  const addTodo = (work, assignedTo) => {
+  const addTodo = (work: any, assignedTo: any) => {
 
     let index = 0;
 
